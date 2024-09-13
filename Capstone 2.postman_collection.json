@@ -1,0 +1,855 @@
+{
+	"info": {
+		"_postman_id": "e5ab10cc-ee3f-46ca-9c5b-0296330c29d8",
+		"name": "Capstone 2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34845326"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "REGISTER USER REQUEST",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"Jonh\",\r\n    \"lastName\": \"Doe\",\r\n    \"email\": \"customer@mail.com\",\r\n    \"mobileNo\": \"09123418000\",\r\n    \"password\": \"customer123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://ec2-3-142-164-9.us-east-2.compute.amazonaws.com/b3/users/register",
+							"protocol": "http",
+							"host": [
+								"ec2-3-142-164-9",
+								"us-east-2",
+								"compute",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"b3",
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LOGIN USER REQUEST",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"customer@mail.com\",\r\n    \"password\": \"customer123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://ec2-3-142-164-9.us-east-2.compute.amazonaws.com/b3/users/login",
+							"protocol": "http",
+							"host": [
+								"ec2-3-142-164-9",
+								"us-east-2",
+								"compute",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"b3",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET USER DETAILS",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZDk0ZjI2N2E5NDE4ZGE5MjhmYzMzMSIsImVtYWlsIjoiY3VzdG9tZXIyQG1haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTcyNTUxNzYzMX0.noJcGr1v-uBRIZpSYdY9P2kH96TG5sIjrLFRK_fuEEQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://ec2-3-142-164-9.us-east-2.compute.amazonaws.com/b3/users/details",
+							"protocol": "http",
+							"host": [
+								"ec2-3-142-164-9",
+								"us-east-2",
+								"compute",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"b3",
+								"users",
+								"details"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SET USER AS ADMIN",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YzQ4YTEwNzAyYzA2OGFhYWQ4ZWU3MSIsImVtYWlsIjoiYWRtaW5AbWFpbC5jb20iLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE3MjQ5MjE0NDN9.5A3RwObn0dyjXi-ZtZH1Mntnm3jIeQyLOEgn-MFbzyM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://ec2-3-142-164-9.us-east-2.compute.amazonaws.com/b3/users/66cc78d94efcd18bf72bf305/set-as-admin",
+							"protocol": "http",
+							"host": [
+								"ec2-3-142-164-9",
+								"us-east-2",
+								"compute",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"b3",
+								"users",
+								"66cc78d94efcd18bf72bf305",
+								"set-as-admin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE PASSWORD REQUEST",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZDA3NTYzMTI4ZTBhZTNiNzBmZjhkOSIsImVtYWlsIjoiam9obmRvZUBnbWFpbC5jb20iLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNzI0OTM3NTk1fQ.-bD_xA0iEUoy8A_rLXPhFrczCmJnxPnYrP4mNzsqerU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\": \"kdhops123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://ec2-3-142-164-9.us-east-2.compute.amazonaws.com/b3/users/update-password",
+							"protocol": "http",
+							"host": [
+								"ec2-3-142-164-9",
+								"us-east-2",
+								"compute",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"b3",
+								"users",
+								"update-password"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "CREATE PRODUCT REQUEST",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YzQ4YTEwNzAyYzA2OGFhYWQ4ZWU3MSIsImVtYWlsIjoiYWRtaW5AbWFpbC5jb20iLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE3MjQ5MjE0NDN9.5A3RwObn0dyjXi-ZtZH1Mntnm3jIeQyLOEgn-MFbzyM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"product1\",\r\n    \"description\": \"description of product1\",\r\n    \"price\": 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://ec2-3-142-164-9.us-east-2.compute.amazonaws.com/b3/products/",
+							"protocol": "http",
+							"host": [
+								"ec2-3-142-164-9",
+								"us-east-2",
+								"compute",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"b3",
+								"products",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RETRIVE ALL PRODUCT REQUEST",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YzQ4YTEwNzAyYzA2OGFhYWQ4ZWU3MSIsImVtYWlsIjoiYWRtaW5AbWFpbC5jb20iLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE3MjQ5MjE0NDN9.5A3RwObn0dyjXi-ZtZH1Mntnm3jIeQyLOEgn-MFbzyM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://ec2-3-142-164-9.us-east-2.compute.amazonaws.com/b3/products/all",
+							"protocol": "http",
+							"host": [
+								"ec2-3-142-164-9",
+								"us-east-2",
+								"compute",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"b3",
+								"products",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RETRIVE ALL ACTIVE PRODUCT REQUEST",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://ec2-3-142-164-9.us-east-2.compute.amazonaws.com/b3/products/active",
+							"protocol": "http",
+							"host": [
+								"ec2-3-142-164-9",
+								"us-east-2",
+								"compute",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"b3",
+								"products",
+								"active"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RETRIEVE SINGLE PRODUCT REQUEST",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://ec2-3-142-164-9.us-east-2.compute.amazonaws.com/b3/products/66c6a847f01e2d11d344502a",
+							"protocol": "http",
+							"host": [
+								"ec2-3-142-164-9",
+								"us-east-2",
+								"compute",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"b3",
+								"products",
+								"66c6a847f01e2d11d344502a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE PRODUCT INFO REQUEST",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YzQ4YTEwNzAyYzA2OGFhYWQ4ZWU3MSIsImVtYWlsIjoiYWRtaW5AbWFpbC5jb20iLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE3MjQ5MjE0NDN9.5A3RwObn0dyjXi-ZtZH1Mntnm3jIeQyLOEgn-MFbzyM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Smartwatch\",\r\n    \"description\": \"Feature-rich smartwatch with heart rate monitoring, GPS, and customizable watch faces.\",\r\n    \"price\": 1170\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://ec2-3-142-164-9.us-east-2.compute.amazonaws.com/b3/products/66c6a847f01e2d11d344502a/update",
+							"protocol": "http",
+							"host": [
+								"ec2-3-142-164-9",
+								"us-east-2",
+								"compute",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"b3",
+								"products",
+								"66c6a847f01e2d11d344502a",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ARCHIVE PRODUCT REQUEST",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YzQ4YTEwNzAyYzA2OGFhYWQ4ZWU3MSIsImVtYWlsIjoiYWRtaW5AbWFpbC5jb20iLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE3MjQ5MjE0NDN9.5A3RwObn0dyjXi-ZtZH1Mntnm3jIeQyLOEgn-MFbzyM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://ec2-3-142-164-9.us-east-2.compute.amazonaws.com/b3/products/66c6a847f01e2d11d344502a/archive",
+							"protocol": "http",
+							"host": [
+								"ec2-3-142-164-9",
+								"us-east-2",
+								"compute",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"b3",
+								"products",
+								"66c6a847f01e2d11d344502a",
+								"archive"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ACTIVATE PRODUCT REQUEST",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YzQ4YTEwNzAyYzA2OGFhYWQ4ZWU3MSIsImVtYWlsIjoiYWRtaW5AbWFpbC5jb20iLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE3MjQ5MjE0NDN9.5A3RwObn0dyjXi-ZtZH1Mntnm3jIeQyLOEgn-MFbzyM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://ec2-3-142-164-9.us-east-2.compute.amazonaws.com/b3/products/66c6a847f01e2d11d344502a/activate",
+							"protocol": "http",
+							"host": [
+								"ec2-3-142-164-9",
+								"us-east-2",
+								"compute",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"b3",
+								"products",
+								"66c6a847f01e2d11d344502a",
+								"activate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SEARCH BY PRODUCT REQUEST",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"productName\": \"umbrella\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://ec2-3-142-164-9.us-east-2.compute.amazonaws.com/b3/products/search-by-name",
+							"protocol": "http",
+							"host": [
+								"ec2-3-142-164-9",
+								"us-east-2",
+								"compute",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"b3",
+								"products",
+								"search-by-name"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SEARCH  PRODUCTS BY PRICE REQUEST",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"minPrice\": 1000,\r\n    \"maxPrice\": 20000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://ec2-3-142-164-9.us-east-2.compute.amazonaws.com/b3/products/search-by-price",
+							"protocol": "http",
+							"host": [
+								"ec2-3-142-164-9",
+								"us-east-2",
+								"compute",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"b3",
+								"products",
+								"search-by-price"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cart",
+			"item": [
+				{
+					"name": "GET USER'S CART REQUEST",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZDA0NTY4NDNiMjJlOTcyNDY1NmM4MSIsImVtYWlsIjoiY3VzdG9tZXJAbWFpbC5jb20iLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNzI0OTI1NDA4fQ.ON6YtC-EtT-7ATlY4IFQsqRPuW8T7DMdtYybT-KxAsc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://ec2-3-142-164-9.us-east-2.compute.amazonaws.com/b3/cart/get-cart",
+							"protocol": "http",
+							"host": [
+								"ec2-3-142-164-9",
+								"us-east-2",
+								"compute",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"b3",
+								"cart",
+								"get-cart"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ADD TO CART REQUEST",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZDZhZjI0ZmVjMTI0MTY3ZTA3NTM1NiIsImVtYWlsIjoiY3VzdG9tZXJAbWFpbC5jb20iLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNzI1NDkzNDQwfQ.Z6_iErGclD5mrU8VXjhfJ7I3NqdFt0uXXlECq65sQTQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"productId\": \"66c6a831f01e2d11d3445027\",\r\n    \"quantity\": 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://ec2-3-142-164-9.us-east-2.compute.amazonaws.com/b3/cart/add-to-cart",
+							"protocol": "http",
+							"host": [
+								"ec2-3-142-164-9",
+								"us-east-2",
+								"compute",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"b3",
+								"cart",
+								"add-to-cart"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE CART QUANTITY",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZDA0NTY4NDNiMjJlOTcyNDY1NmM4MSIsImVtYWlsIjoiY3VzdG9tZXJAbWFpbC5jb20iLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNzI0OTI1NDA4fQ.ON6YtC-EtT-7ATlY4IFQsqRPuW8T7DMdtYybT-KxAsc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"productId\": \"66c6a847f01e2d11d344502a\",\r\n    \"quantity\": 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://ec2-3-142-164-9.us-east-2.compute.amazonaws.com/b3/cart/update-cart-quantity",
+							"protocol": "http",
+							"host": [
+								"ec2-3-142-164-9",
+								"us-east-2",
+								"compute",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"b3",
+								"cart",
+								"update-cart-quantity"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "REMOVE PRODUCT IN CART REQUEST",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZDA0NTY4NDNiMjJlOTcyNDY1NmM4MSIsImVtYWlsIjoiY3VzdG9tZXJAbWFpbC5jb20iLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNzI0OTI1NDA4fQ.ON6YtC-EtT-7ATlY4IFQsqRPuW8T7DMdtYybT-KxAsc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://ec2-3-142-164-9.us-east-2.compute.amazonaws.com/b3/cart/66cc607fe5fc33f296602899/remove-from-cart",
+							"protocol": "http",
+							"host": [
+								"ec2-3-142-164-9",
+								"us-east-2",
+								"compute",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"b3",
+								"cart",
+								"66cc607fe5fc33f296602899",
+								"remove-from-cart"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "CLEAR CART REQUEST",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZDA0NTY4NDNiMjJlOTcyNDY1NmM4MSIsImVtYWlsIjoiY3VzdG9tZXJAbWFpbC5jb20iLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNzI0OTI1NDA4fQ.ON6YtC-EtT-7ATlY4IFQsqRPuW8T7DMdtYybT-KxAsc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://ec2-3-142-164-9.us-east-2.compute.amazonaws.com/b3/cart/clear-cart",
+							"protocol": "http",
+							"host": [
+								"ec2-3-142-164-9",
+								"us-east-2",
+								"compute",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"b3",
+								"cart",
+								"clear-cart"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE ORDER REQUEST",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZDA0NTY4NDNiMjJlOTcyNDY1NmM4MSIsImVtYWlsIjoiY3VzdG9tZXJAbWFpbC5jb20iLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNzI0OTI1NDA4fQ.ON6YtC-EtT-7ATlY4IFQsqRPuW8T7DMdtYybT-KxAsc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://ec2-3-142-164-9.us-east-2.compute.amazonaws.com/b3/orders/checkout",
+							"protocol": "http",
+							"host": [
+								"ec2-3-142-164-9",
+								"us-east-2",
+								"compute",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"b3",
+								"orders",
+								"checkout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RETRIEVE USER'S ORDER REQUEST",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZDA0NTY4NDNiMjJlOTcyNDY1NmM4MSIsImVtYWlsIjoiY3VzdG9tZXJAbWFpbC5jb20iLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNzI0OTI1NDA4fQ.ON6YtC-EtT-7ATlY4IFQsqRPuW8T7DMdtYybT-KxAsc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://ec2-3-142-164-9.us-east-2.compute.amazonaws.com/b3/orders/my-orders",
+							"protocol": "http",
+							"host": [
+								"ec2-3-142-164-9",
+								"us-east-2",
+								"compute",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"b3",
+								"orders",
+								"my-orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RETRIVE ALL USER'S CART",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YzQ4YTEwNzAyYzA2OGFhYWQ4ZWU3MSIsImVtYWlsIjoiYWRtaW5AbWFpbC5jb20iLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE3MjQ5MjE0NDN9.5A3RwObn0dyjXi-ZtZH1Mntnm3jIeQyLOEgn-MFbzyM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://ec2-3-142-164-9.us-east-2.compute.amazonaws.com/b3/orders/all-orders",
+							"protocol": "http",
+							"host": [
+								"ec2-3-142-164-9",
+								"us-east-2",
+								"compute",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"b3",
+								"orders",
+								"all-orders"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
