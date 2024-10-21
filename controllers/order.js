@@ -1,72 +1,83 @@
-const { errorHandler } = require("../auth");
 const Cart = require("../models/Cart");
 const Order = require('../models/Order');
 
-//[SECTION] RETRIEVE USER ORDER
-module.exports.retrieveUserOrder = (req, res) => {
+// [SECTION] RETRIEVE USER ORDERS
+module.exports.retrieveAllUserOrder = async (req, res) => {
 
-	const userId = req.user.id;
+    try {
 
-	return Order.find({ userId: userId })
-	.then(orders => {
-		if (!orders || orders.length === 0){
-			return res.status(404).json({ message: 'Failed on Find'});
-		} else {
-            return res.status(200).json({ orders: orders});
+        const orders = await Order.find({});
+
+        if (orders.length === 0) {
+            return res.status(404).json({ message: 'No orders found' });
         }
-	})
-	.catch(err => errorHandler(err, req, res));
+
+        return res.status(200).json({ orders: orders });
+
+    } catch (err) {
+        console.error(err);
+        return res.status(500).json({ message: 'An error occurred while retrieving orders', error: err.message });
+    }
+
 };
 
-module.exports.retrieveAllUserOrder = (req, res) => {
+// [SECTION] RETRIEVE ALL ORDERS
+module.exports.retrieveUserOrder = async (req, res) => {
 
-    return Order.find({})
-    .then(orders => {
-        if (!orders || orders.length === 0) {
-            return res.status(404).json({ message: 'No Orders Found' });
-        } else {
-            return res.status(200).send({ orders: orders });
+    try {
+        const userId = req.user.id;
+
+        const orders = await Order.find({ userId });
+
+        if (orders.length === 0) {
+            return res.status(200).json({ message: 'No orders found' });
         }
-    })
-    .catch(err => errorHandler(err, req, res));
+
+        return res.status(200).json({ orders: orders });
+
+    } catch (err) {
+        console.error(err);
+        return res.status(500).json({ message: 'An error occurred while retrieving user orders', error: err.message });
+    }
 
 };
-  
 
 // [SECTION] CREATE ORDER
-module.exports.createOrder = (req, res) => {
-	
-    const userId = req.user.id;
+module.exports.createOrder = async (req, res) => {
 
-    return Cart.findOne({ userId: userId })
-    .then(cart => {
+    try {
+        const userId = req.user.id;
+
+        let cart = await Cart.findOne({ userId });
 
         if (!cart) {
-            return res.status(404).send({ error: 'Failed to Find'})
-        } 
-        
-        if (cart.cartItems.length < 1){
-            return res.status(404).send({ error: 'No Items to Checkout' });
-        } else {
-
-            const newOrder = new Order ({
-                userId: userId,
-                productsOrdered: cart.cartItems,
-                totalPrice: cart.totalPrice
-            });
-
-            Cart.findByIdAndDelete(cart._id)
-            .then(() => {
-                return newOrder.save();
-            })
-            .then(() => {
-                return res.status(200).send({ message: 'Ordered Successfully' });
-            
-            })
-            .catch(err => errorHandler(err, req, res));
+            return res.status(404).json({ message: 'Cart not found' });
         }
-        
-    })
-    .catch(err => errorHandler(err, req, res));
+
+        if (cart.cartItems.length === 0) {
+            return res.status(400).json({ error: 'No Items to Checkout' });
+        }
+
+        const newOrder = new Order({
+            userId: userId,
+            productsOrdered: cart.cartItems,
+            totalPrice: cart.totalPrice,
+        });
+
+        await newOrder.save();
+
+        cart.cartItems = [];
+        cart.totalPrice = 0;
+        await cart.save();
+
+        return res.status(201).json({
+            message: 'Ordered successfully',
+            order: newOrder,
+        });
+
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ message: 'An error occurred while creating the order', error: error.message });
+    }
 
 };
